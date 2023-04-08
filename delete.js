@@ -3,15 +3,41 @@
 const mysql = require("mysql2/promise");
 
 module.exports.deleteTicket = async (event) => {
-  return {
-    statusCode: 200,
-    body: JSON.stringify(
-      {
-        message: "La funzione deleteTicket funziona!",
-        input: event,
+  const connection = await mysql.createConnection({
+    host: process.env.DB_HOST,
+    port: process.env.PORT,
+    user: process.env.USER,
+    password: process.env.PASSWORD,
+    database: process.env.DB_NAME,
+  });
+
+  try {
+
+    let data = JSON.parse(event.body);
+
+    const [rows, fields] = await connection.execute(
+      "DELETE FROM Ticket WHERE id = ?",
+      [data.id]
+    );
+
+    connection.end();
+
+    return {
+      statusCode: 200,
+      headers: {
+        "Content-type": "application/json",
       },
-      null,
-      2
-    ),
-  };
+      body: JSON.stringify(rows),
+    };
+  } catch (error) {
+    connection.end();
+
+    return {
+      statusCode: 500,
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(error.message),
+    };
+  }
 };
