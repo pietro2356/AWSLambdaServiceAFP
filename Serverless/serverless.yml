@@ -1,0 +1,50 @@
+service: awslambdaserviceafp
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+  iam:
+    role: ${file(./credentials.yml):iam.role}
+
+  environment:
+    DB_HOST: ${file(./credentials.yml):ENV.DB_HOST}
+    PORT: ${file(./credentials.yml):ENV.PORT}
+    USER: ${file(./credentials.yml):ENV.USER}
+    PASSWORD: ${file(./credentials.yml):ENV.PASSWORD}
+    DB_NAME: ${file(./credentials.yml):ENV.DB_NAME}
+
+functions:
+  # funzione di Default
+  hello:
+    handler: handler.hello
+
+  getTicket:
+    handler: get.getTicket
+    events:
+      - http:
+          path: /api/get-ticket
+          method: get
+
+  insertTicket:
+    handler: insert.insertTicket
+    events:
+      - http:
+          path: /api/insert-ticket
+          method: post
+
+  deleteTicket:
+    handler: delete.deleteTicket
+    events:
+      - http:
+          path: /api/delete-ticket
+          method: delete  
+
+  updateTicket:
+    handler: update.updateTicket
+    events:
+      - http:
+          path: /api/update-ticket
+          method: put
