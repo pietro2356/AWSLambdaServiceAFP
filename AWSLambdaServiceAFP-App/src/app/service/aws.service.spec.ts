@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AwsServiceService } from './aws-service.service';
+import { AwsService } from './aws.service';
 
 describe('AwsServiceService', () => {
-  let service: AwsServiceService;
+  let service: AwsService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(AwsServiceService);
+    service = TestBed.inject(AwsService);
   });
 
   it('should be created', () => {
