@@ -1,1 +1,63 @@
 <p>tickettable works!</p>
+<button mat-button color="primary" (click)="execGet()">Get data</button>
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="ticket">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    </ng-container>
+
+    <!-- username Column -->
+    <ng-container matColumnDef="username">
+      <mat-header-cell *matHeaderCellDef> Username </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.username}} </mat-cell>
+    </ng-container>
+
+    <!-- ip_caller Column -->
+    <ng-container matColumnDef="ip_caller">
+      <mat-header-cell *matHeaderCellDef> IP Caller </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.ip_caller}} </mat-cell>
+    </ng-container>
+
+    <!-- ip_server Column -->
+    <ng-container matColumnDef="ip_server">
+      <mat-header-cell *matHeaderCellDef> IP Server </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.ip_server}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="url_path_server">
+      <mat-header-cell *matHeaderCellDef> URL Server Path </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.url_path_server}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="patient">
+      <mat-header-cell *matHeaderCellDef> Patient </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.patient}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="hospital">
+      <mat-header-cell *matHeaderCellDef> Hospital </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.hospital}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="department">
+      <mat-header-cell *matHeaderCellDef> Department </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.department}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="valid">
+      <mat-header-cell *matHeaderCellDef> Valid </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.valid}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

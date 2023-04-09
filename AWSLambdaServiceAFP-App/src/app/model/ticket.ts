@@ -7,6 +7,6 @@ export interface Ticket {
   patient: string;
   hospital: string;
   department: string;
-  desc: string;
+  description: string;
   valid: number;
 }
