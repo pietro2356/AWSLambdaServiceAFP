@@ -60,6 +60,22 @@
       <mat-cell *matCellDef="let element"> {{element.valid}} </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
+      <mat-cell *matCellDef="let element"><button mat-button (click)="editTicket(element)"><mat-icon class="mat-18">edit</mat-icon></button></mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="delete">
+      <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
+      <mat-cell *matCellDef="let element"><button mat-button (click)="deleteTicket(element)"><mat-icon class="mat-18">delete</mat-icon></button></mat-cell>
+    </ng-container>
+
+    <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+      mat-row
+      (click)="clickedRows = row"
+      *matRowDef="let row; columns: displayedColumns;"
+  ></tr> -->
+
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
