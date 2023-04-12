@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { Ticket } from 'src/app/model/Ticket';
 import { AwsService } from 'src/app/service/aws.service';
 
@@ -12,6 +13,8 @@ export class TickettableComponent {
   ticket: Ticket[] = [];
 
   displayedColumns = ['id', 'username', 'patient', 'hospital', 'department', 'description'];
+
+  dataSource: any;
 
   constructor(private aws: AwsService) {}
 
@@ -30,13 +33,15 @@ export class TickettableComponent {
       item.forEach((el: Ticket) => {
         tmp.push(el);
       });
-
-      console.log(this.ticket);
-
-      this.ticket = tmp;
+      this.dataSource = new MatTableDataSource(tmp);
     });
 
     console.log("tmp", tmp);
 
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }

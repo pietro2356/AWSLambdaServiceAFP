@@ -1,7 +1,10 @@
-<p>tickettable works!</p>
-<button mat-button color="primary" (click)="execGet()">Get data</button>
 <div class="example-container mat-elevation-z8">
-  <mat-table #table [dataSource]="ticket">
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+  </mat-form-field>
+
+  <mat-table #table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
 
     <!-- Position Column -->
     <ng-container matColumnDef="id">
