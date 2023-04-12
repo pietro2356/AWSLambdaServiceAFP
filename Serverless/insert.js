@@ -37,6 +37,7 @@ module.exports.insertTicket = async (event) => {
       statusCode: 200,
       headers: {
         "Content-type": "application/json",
+        "Access-Control-Allow-Origin" : "*",
       },
       body: JSON.stringify(rows),
     };
@@ -47,6 +48,7 @@ module.exports.insertTicket = async (event) => {
       statusCode: 500,
       headers: {
         "Content-type": "application/json",
+        "Access-Control-Allow-Origin" : "*",
       },
       body: JSON.stringify(error.message),
     };

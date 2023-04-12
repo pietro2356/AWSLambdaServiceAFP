@@ -19,6 +19,10 @@ module.exports.getTicket = async (event) => {
       statusCode: 200,
       headers: {
         "Content-type": "application/json",
+        "Access-Control-Allow-Origin" : "*",
+        "Access-Control-Allow-Headers": "true",
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, PATCH, DELETE"
       },
       body: JSON.stringify(rows, null, 2),
     };
@@ -29,6 +33,10 @@ module.exports.getTicket = async (event) => {
       statusCode: 500,
       headers: {
         "Content-type": "application/json",
+        "Access-Control-Allow-Origin" : "*",
+        "Access-Control-Allow-Headers": "true",
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, PATCH, DELETE"
       },
       body: JSON.stringify(error.message),
     };
