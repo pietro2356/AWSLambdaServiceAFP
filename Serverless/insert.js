@@ -35,6 +35,7 @@ module.exports.insertTicket = async (event) => {
             statusCode: 200,
             headers: {
                 "Content-type": "application/json",
+                "Access-Control-Allow-Origin" : "*", //  Necessario per il supporto al CORS
             },
             body: JSON.stringify(rows, null, 2)
         };
@@ -47,6 +48,7 @@ module.exports.insertTicket = async (event) => {
             body: JSON.stringify(error.message),
             headers: {
                 "Content-type": "application/json",
+                "Access-Control-Allow-Origin" : "*",
             }
         }
     }
