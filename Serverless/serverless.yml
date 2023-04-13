@@ -11,7 +11,7 @@
 #
 # Happy Coding!
 
-service: awsafp-lessons-2
+service: awsafp-lessons-3
 # app and org for use with dashboard.serverless.com
 #app: your-app-name
 #org: your-org-name
@@ -62,19 +62,13 @@ provider:
 #    - include-me-dir/**
 
 functions:
-  hello:
-    handler: handler.hello
-    events:
-      - http:
-          path: /api/say-hello
-          method: get
-
-  getAll:
-    handler: get.getAll
+  getTicket:
+    handler: get.getTicket
     events:
       - http:
           path: /api/get-ticket
           method: get
+          cors: true
 
   insertTicket:
     handler: insert.insertTicket
@@ -82,6 +76,7 @@ functions:
       - http:
           path: /api/insert-ticket
           method: post
+          cors: true
 
   deleteTicket:
     handler: delete.deleteTicket
@@ -89,6 +84,7 @@ functions:
       - http:
           path: /api/delete-ticket
           method: delete
+          cors: true
           
   updateTicket:
     handler: update.updateTicket
@@ -96,6 +92,7 @@ functions:
       - http:
           path: /api/update-ticket
           method: put
+          cors: true
 
 
 #    The following are a few example events you can configure

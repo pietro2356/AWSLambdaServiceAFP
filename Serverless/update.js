@@ -26,6 +26,9 @@ module.exports.updateTicket = async (event) => {
             statusCode: 200,
             headers: {
                 "Content-type": "application/json",
+
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Credentials": true,
             },
             body: JSON.stringify(rows, null, 2)
         };
@@ -38,6 +41,9 @@ module.exports.updateTicket = async (event) => {
             body: JSON.stringify(error.message),
             headers: {
                 "Content-type": "application/json",
+
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Credentials": true,
             }
         }
     }

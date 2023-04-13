@@ -2,7 +2,7 @@
 
 const mysql = require("mysql2/promise");
 
-module.exports.getAll = async (event) => {
+module.exports.getTicket = async (event) => {
     const connection = await mysql.createConnection({
         host: "afphospitalmanagment.cqttky88vx96.us-east-1.rds.amazonaws.com",
         port: 3306,
@@ -19,6 +19,9 @@ module.exports.getAll = async (event) => {
             statusCode: 200,
             headers: {
                 "Content-type": "application/json",
+                
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Credentials": true,
             },
             body: JSON.stringify(rows, null, 2)
         };
@@ -31,6 +34,9 @@ module.exports.getAll = async (event) => {
             body: JSON.stringify(error.message),
             headers: {
                 "Content-type": "application/json",
+                
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Credentials": true,
             }
         }
     }
