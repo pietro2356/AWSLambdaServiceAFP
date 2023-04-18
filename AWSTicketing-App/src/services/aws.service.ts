@@ -9,6 +9,7 @@ import { Ticket } from 'src/models/ticket';
 export class AwsService {
 
   api: string = "https://f9uhzvsvzi.execute-api.us-east-1.amazonaws.com/dev";
+  // api: string = "https://iicb3ls7xc.execute-api.us-east-1.amazonaws.com/dev";
 
 
   constructor(public http: HttpClient) { }
@@ -43,7 +44,6 @@ export class AwsService {
         id: id
       })
     }
-    console.log(httpOptions);
 
     return this.http.delete(this.api + "/api/delete-ticket", httpOptions);
   }
