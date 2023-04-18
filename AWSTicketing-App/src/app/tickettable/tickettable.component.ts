@@ -9,13 +9,13 @@ import { AwsService } from 'src/services/aws.service';
   styleUrls: ['./tickettable.component.css']
 })
 export class TickettableComponent {
-  displayedColumns: string[] = ['id', 'username', 'patient'];
+  // displayedColumns: string[] = ['id', 'username', 'patient', 'description', ];
   dataSource: any;
-  selectedTicket?: Ticket;
+  // selectedTicket?: Ticket;
 
   ticket: Ticket[] = [];
 
-  // displayedColumns = ['id', 'username', 'patient', 'hospital', 'department', 'description', 'edit', 'delete'];
+  displayedColumns = ['id', 'username', 'patient', 'hospital', 'department', 'description', 'edit', 'delete'];
 
 
   constructor(public aws: AwsService){}
@@ -55,15 +55,15 @@ export class TickettableComponent {
     });
   }
 
-  executeUpdate(){
-    const res = this.aws.updateTicket(36, "CIAO SONO STATA MODIFICATA").subscribe(item => {
+  executeUpdate(element: Ticket){
+    const res = this.aws.updateTicket(element).subscribe(item => {
       console.log(item);
       this.executeGet();
     });
   }
 
-  executeDelete(){
-    const res = this.aws.deleteTicket(46).subscribe(item => {
+  executeDelete(element: Ticket){
+    const res = this.aws.deleteTicket(element).subscribe(item => {
       console.log(item);
       this.executeGet();
     })

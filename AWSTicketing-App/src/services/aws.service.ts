@@ -24,24 +24,26 @@ export class AwsService {
     return this.http.post<any>(this.api + "/api/insert-ticket", body);
   }
 
-  updateTicket(id: number, desc: string): Observable<any>{
+  updateTicket(ticket: Ticket): Observable<any>{
+    // TODO: Impostare i controlli su ID.
+    // FIX: Caccia al BUG.
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       })
     }
-    const body = JSON.stringify({id: id, description: desc});
+    const body = JSON.stringify({id: ticket.id, description: ticket.description});
 
     return this.http.put(this.api + "/api/update-ticket", body, httpOptions);
   }
 
-  deleteTicket(id: number): Observable<any>{
+  deleteTicket(ticket: Ticket): Observable<any>{
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       }),
       body: JSON.stringify({
-        id: id
+        id: ticket.id
       })
     }
 
